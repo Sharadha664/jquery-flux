@@ -7,72 +7,36 @@
     <meta name="google-site-verification" content="vQk5YgdDTMWBHGuE1z1WM4pbZl4GdkgDpR8rkPAKpac" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    
     <style>
         :root { --primary: #00d2ff; --secondary: #3a7bd5; --accent: #22c55e; --dark: #0f172a; --bg: #f8fafc; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         body { background: var(--bg); color: var(--dark); scroll-behavior: smooth; }
-
-        /* Header & Nav */
-        header { 
-            background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); padding: 15px 8%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0;
-        }
+        header { background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #e2e8f0; }
         .logo { font-size: 1.8rem; font-weight: 800; cursor: pointer; letter-spacing: -1px; }
         .logo span { color: var(--secondary); }
         nav ul { display: flex; list-style: none; gap: 25px; }
         nav li { font-weight: 600; cursor: pointer; color: #64748b; transition: 0.3s; }
         nav li:hover, nav li.active { color: var(--secondary); }
-
-        /* Page Layout */
         .page-section { display: none; padding: 60px 8%; animation: fadeIn 0.6s ease; }
         .page-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* DYNAMIC HOME PAGE STYLES */
-        .dynamic-hero { 
-            position: relative; height: 450px; border-radius: 40px; overflow: hidden;
-            background: #0f172a; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 60px; border: 1px solid rgba(255,255,255,0.1);
-        }
-        .hero-bg {
-            position: absolute; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            z-index: 1;
-        }
-        .floating-circles span {
-            position: absolute; background: rgba(58, 123, 213, 0.2); border-radius: 50%;
-            filter: blur(40px); z-index: 2; animation: float 10s infinite alternate;
-        }
+        .dynamic-hero { position: relative; height: 450px; border-radius: 40px; overflow: hidden; background: #0f172a; display: flex; align-items: center; justify-content: center; margin-bottom: 60px; border: 1px solid rgba(255,255,255,0.1); }
+        .hero-bg { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); z-index: 1; }
+        .floating-circles span { position: absolute; background: rgba(58, 123, 213, 0.2); border-radius: 50%; filter: blur(40px); z-index: 2; animation: float 10s infinite alternate; }
         @keyframes float { from { transform: translate(0,0); } to { transform: translate(30px, 50px); } }
-
-        .welcome-card {
-            position: relative; z-index: 10; background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(15px); padding: 50px 80px; border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.1); text-align: center;
-            transform-style: preserve-3d; transition: 0.1s;
-        }
+        .welcome-card { position: relative; z-index: 10; background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); padding: 50px 80px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); text-align: center; transform-style: preserve-3d; transition: 0.1s; }
         .welcome-card h1 { font-size: 3.5rem; color: white; font-weight: 800; margin-bottom: 10px; }
         .welcome-card h1 span { color: var(--primary); }
         .welcome-card p { color: #94a3b8; font-size: 1.2rem; letter-spacing: 2px; }
-
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; }
-        .product-card { 
-            background: white; padding: 20px; border-radius: 30px; border: 1px solid #e2e8f0; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;
-        }
+        .product-card { background: white; padding: 20px; border-radius: 30px; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--secondary); }
         .product-card img { width: 100%; border-radius: 20px; height: 180px; object-fit: cover; margin-bottom: 15px; }
         .product-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
         .product-card .price { font-weight: 800; color: var(--secondary); font-size: 1.3rem; }
-
-        /* About & Team */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
         .member-card { background: white; padding: 30px; border-radius: 25px; border: 1px solid #e2e8f0; text-align: center; }
         .member-card h3 { color: var(--secondary); margin-bottom: 10px; }
-
-        /* Blog Sidebar & Content */
         .blog-container { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
         .blog-sidebar { background: white; border-radius: 20px; padding: 25px; border: 1px solid #e2e8f0; position: sticky; top: 120px; height: 80vh; overflow-y: auto; }
         .blog-nav-list { list-style: none; }
@@ -80,25 +44,18 @@
         .blog-nav-list li:hover { background: #f1f5f9; color: var(--secondary); }
         .blog-post { background: white; padding: 40px; border-radius: 30px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
         .code-snippet { background: #0f172a; color: #38bdf8; padding: 15px; border-radius: 12px; font-family: 'JetBrains Mono'; margin-top: 15px; font-size: 0.85rem; }
-
-        /* Checkout & Payment */
         .checkout-grid { display: grid; grid-template-columns: 1fr 450px; gap: 40px; }
         .payment-box { background: white; padding: 30px; border-radius: 30px; border: 1px solid #e2e8f0; }
         .payment-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-        .pay-method { 
-            border: 2px solid #f1f5f9; padding: 15px; border-radius: 15px; cursor: pointer; 
-            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
-        }
+        .pay-method { border: 2px solid #f1f5f9; padding: 15px; border-radius: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
         .pay-method img { height: 25px; margin-bottom: 8px; object-fit: contain; }
         .pay-method:hover, .pay-method.active { border-color: var(--secondary); background: #f8faff; }
-        
         input, textarea { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 12px; outline: none; }
         .btn-order { width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
         .btn-order:hover { filter: brightness(1.1); }
     </style>
 </head>
 <body>
-
 <header>
     <div class="logo" data-link="home">JQuery<span>Flux</span></div>
     <nav>
@@ -111,7 +68,6 @@
         </ul>
     </nav>
 </header>
-
 <section id="home" class="page-section active">
     <div class="dynamic-hero" id="hero-area">
         <div class="hero-bg"></div>
@@ -124,11 +80,9 @@
             <p id="dynamic-text">INNOVATING ASYNCHRONOUS COMMERCE</p>
         </div>
     </div>
-    
     <h2 style="margin-bottom: 30px; font-size: 2rem;">Hardware Inventory</h2>
     <div class="product-grid" id="p-grid"></div>
 </section>
-
 <section id="overview" class="page-section">
     <div style="text-align: center; margin-bottom: 50px;">
         <h2 style="font-size: 2.5rem;">Our Mission & Vision</h2>
@@ -142,7 +96,6 @@
         <div class="member-card"><h3>Swathi</h3><p>Quality Assurance lead for seamless user journeys.</p></div>
     </div>
 </section>
-
 <section id="blog" class="page-section">
     <div class="blog-container">
         <aside class="blog-sidebar">
@@ -152,29 +105,15 @@
         <main id="blog-content"></main>
     </div>
 </section>
-
 <section id="contact" class="page-section">
     <h2 style="text-align:center; margin-bottom: 40px;">Contact Technical Support</h2>
     <div class="team-grid">
-        <div class="member-card">
-            <h3>Chaya</h3>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaya@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Chaya</a>
-        </div>
-        <div class="member-card">
-            <h3>Sumanth</h3>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sumanth@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Sumanth</a>
-        </div>
-        <div class="member-card">
-            <h3>Sharadha</h3>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sharadha@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Sharadha</a>
-        </div>
-        <div class="member-card">
-            <h3>Swathi</h3>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=swathi@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Swathi</a>
-        </div>
+        <div class="member-card"><h3>Chaya</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=chaya@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Chaya</a></div>
+        <div class="member-card"><h3>Sumanth</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sumanth@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Sumanth</a></div>
+        <div class="member-card"><h3>Sharadha</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sharadha@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Sharadha</a></div>
+        <div class="member-card"><h3>Swathi</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=swathi@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Swathi</a></div>
     </div>
 </section>
-
 <section id="checkout" class="page-section">
     <div class="checkout-grid">
         <div class="payment-box">
@@ -183,25 +122,12 @@
                 <input type="text" id="c-name" placeholder="Full Name">
                 <input type="text" id="c-phone" placeholder="Phone Number">
                 <textarea id="c-address" rows="3" placeholder="Full Delivery Address"></textarea>
-                
                 <h3 style="margin: 20px 0 10px 0;">Payment Gateway</h3>
                 <div class="payment-options">
-                    <div class="pay-method" data-pay="GPay">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" alt="Google Pay" onerror="this.src='https://www.gstatic.com/images/branding/googlepay/googlepay_logo_88x32.svg'">
-                        <small>GPay</small>
-                    </div>
-                    <div class="pay-method" data-pay="PhonePe">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe">
-                        <small>PhonePe</small>
-                    </div>
-                    <div class="pay-method" data-pay="Razorpay">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay">
-                        <small>Razorpay</small>
-                    </div>
-                    <div class="pay-method" data-pay="Cash">
-                        <div style="font-size:1.2rem;">💵</div>
-                        <small>Cash</small>
-                    </div>
+                    <div class="pay-method" data-pay="GPay"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" alt="Google Pay"><small>GPay</small></div>
+                    <div class="pay-method" data-pay="PhonePe"><img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe"><small>PhonePe</small></div>
+                    <div class="pay-method" data-pay="Razorpay"><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay"><small>Razorpay</small></div>
+                    <div class="pay-method" data-pay="Cash"><div style="font-size:1.2rem;">💵</div><small>Cash</small></div>
                 </div>
             </div>
         </div>
@@ -212,13 +138,9 @@
         </div>
     </div>
 </section>
-
 <script>
 $(document).ready(function() {
-    let cart = [];
-    let total = 0;
-    let selectedPay = "";
-
+    let cart = []; let total = 0; let selectedPay = "";
     const products = [
         { id: 1, n: "Flux Pods Pro", p: 199, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" },
         { id: 2, n: "Vision Watch 6", p: 349, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" },
@@ -227,58 +149,15 @@ $(document).ready(function() {
         { id: 5, n: "Mechanical Keys", p: 149, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" },
         { id: 6, n: "Smart Projector", p: 899, img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=400" }
     ];
-
-    products.forEach(p => {
-        $('#p-grid').append(`<div class="product-card"><img src="${p.img}"><h3>${p.n}</h3><p class="price">$${p.p}</p><button class="btn-order add-to-cart" data-id="${p.id}" style="padding:10px; font-size:0.8rem;">Add to Flux</button></div>`);
-    });
-
-    $('#hero-area').mousemove(function(e) {
-        let x = (window.innerWidth / 2 - e.pageX) / 25;
-        let y = (window.innerHeight / 2 - e.pageY) / 25;
-        $('#tilt-card').css("transform", `rotateY(${x}deg) rotateX(${y}deg)`);
-    });
-
+    products.forEach(p => { $('#p-grid').append(`<div class="product-card"><img src="${p.img}"><h3>${p.n}</h3><p class="price">$${p.p}</p><button class="btn-order add-to-cart" data-id="${p.id}" style="padding:10px; font-size:0.8rem;">Add to Flux</button></div>`); });
+    $('#hero-area').mousemove(function(e) { let x = (window.innerWidth / 2 - e.pageX) / 25; let y = (window.innerHeight / 2 - e.pageY) / 25; $('#tilt-card').css("transform", `rotateY(${x}deg) rotateX(${y}deg)`); });
     const jqueryTopics = ["Sizzle Engine", "DOM Selectors", "Event Delegation", "AJAX Streams", "Fade Effects", "Attr Control", "CSS Variable Hooks", "Form Serialization", "Method Chaining", "Closest Traversal", "Each Iteration", "Stop Queues", "Class Toggling", "Append Logic", "Data Attributes", "Val Management", "Delay/Timeout", "Prop vs Attr", "Offloading Events", "Global AJAX", "Wrap Elements", "InnerHTML Control", "Dimension Logic", "Scroll Detection", "Sibling Traversal"];
-
-    jqueryTopics.forEach((topic, i) => {
-        const id = `topic-${i}`;
-        $('#blog-nav').append(`<li data-target="${id}">${topic}</li>`);
-        $('#blog-content').append(`<div class="blog-post" id="${id}"><h3>${topic}</h3><p>Advanced asynchronous management module. Core to JQueryFlux stability.</p><div class="code-snippet">$('.flux-element').${topic.toLowerCase().replace(' ', '')}();</div></div>`);
-    });
-
-    $('.nav-item, .logo').click(function() {
-        const target = $(this).data('link');
-        $('.nav-item').removeClass('active');
-        $(`.nav-item[data-link="${target}"]`).addClass('active');
-        $('.page-section').hide();
-        $(`#${target}`).show();
-    });
-
-    $(document).on('click', '#blog-nav li', function() {
-        const target = $(this).data('target');
-        $('html, body').animate({ scrollTop: $(`#${target}`).offset().top - 100 }, 500);
-    });
-
-    $(document).on('click', '.add-to-cart', function() {
-        const item = products.find(x => x.id == $(this).data('id'));
-        cart.push(item);
-        total += item.p;
-        $('#cart-count').text(cart.length);
-        $('#total-val').text(total);
-        $('#cart-items-list').append(`<div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;"><span>${item.n}</span> <span>$${item.p}</span></div>`);
-    });
-
-    $('.pay-method').click(function() {
-        $('.pay-method').removeClass('active');
-        $(this).addClass('active');
-        selectedPay = $(this).data('pay');
-    });
-
-    $('#final-order').click(function() {
-        if(!selectedPay || !$('#c-name').val() || !$('#c-phone').val()) return alert("Please fill shipping details!");
-        alert("Order Successful via " + selectedPay + "!");
-        location.reload();
-    });
+    jqueryTopics.forEach((topic, i) => { const id = `topic-${i}`; $('#blog-nav').append(`<li data-target="${id}">${topic}</li>`); $('#blog-content').append(`<div class="blog-post" id="${id}"><h3>${topic}</h3><p>Advanced asynchronous management module.</p><div class="code-snippet">$('.flux-element').${topic.toLowerCase().replace(' ', '')}();</div></div>`); });
+    $('.nav-item, .logo').click(function() { const target = $(this).data('link'); $('.nav-item').removeClass('active'); $(`.nav-item[data-link="${target}"]`).addClass('active'); $('.page-section').hide(); $(`#${target}`).show(); });
+    $(document).on('click', '#blog-nav li', function() { const target = $(this).data('target'); $('html, body').animate({ scrollTop: $(`#${target}`).offset().top - 100 }, 500); });
+    $(document).on('click', '.add-to-cart', function() { const item = products.find(x => x.id == $(this).data('id')); cart.push(item); total += item.p; $('#cart-count').text(cart.length); $('#total-val').text(total); $('#cart-items-list').append(`<div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;"><span>${item.n}</span> <span>$${item.p}</span></div>`); });
+    $('.pay-method').click(function() { $('.pay-method').removeClass('active'); $(this).addClass('active'); selectedPay = $(this).data('pay'); });
+    $('#final-order').click(function() { if(!selectedPay || !$('#c-name').val() || !$('#c-phone').val()) return alert("Please fill shipping details!"); alert("Order Successful via " + selectedPay + "!"); location.reload(); });
 });
 </script>
 </body>
