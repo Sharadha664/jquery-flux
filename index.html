@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ43FFY7X4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-BQ43FFY7X4');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ43FFY7X4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BQ43FFY7X4');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JQueryFlux | Production Tech Store</title>
@@ -49,19 +48,36 @@
         .blog-container { display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
         .blog-sidebar { background: white; border-radius: 20px; padding: 25px; border: 1px solid #e2e8f0; position: sticky; top: 120px; height: 80vh; overflow-y: auto; }
         .blog-nav-list { list-style: none; }
-        .blog-nav-list li { padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; margin-bottom: 5px; color: #64748b; font-weight: 600; }
+        .blog-nav-list li { padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; margin-bottom: 5px; color: #64748b; font-weight: 600; transition: 0.3s; background: transparent; }
         .blog-nav-list li:hover { background: #f1f5f9; color: var(--secondary); }
-        .blog-post { background: white; padding: 40px; border-radius: 30px; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-        .code-snippet { background: #0f172a; color: #38bdf8; padding: 15px; border-radius: 12px; font-family: 'JetBrains Mono'; margin-top: 15px; font-size: 0.85rem; }
+        .blog-nav-list li.active { background: #f1f5f9; color: var(--secondary); }
+        .blog-post { background: white; padding: 40px; border-radius: 30px; border: 1px solid #e2e8f0; margin-bottom: 30px; display: none; }
+        .blog-post.active { display: block; }
+        .blog-post h3 { font-size: 2rem; margin-bottom: 20px; color: var(--secondary); }
+        .blog-post h4 { margin: 25px 0 12px; color: #0f172a; font-size: 1.2rem; }
+        .blog-post p { color: #475569; line-height: 1.8; margin-bottom: 14px; }
+        .code-snippet { background: #0f172a; color: #38bdf8; padding: 15px; border-radius: 12px; font-family: 'JetBrains Mono'; margin-top: 15px; font-size: 0.85rem; overflow-x: auto; }
+        .diagram-box { background: #f8fafc; border: 1px dashed #94a3b8; border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .diagram-title { font-weight: 800; color: var(--secondary); margin-bottom: 10px; }
+        .diagram-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; }
+        .diagram-node { background: white; border: 1px solid #cbd5e1; border-radius: 14px; padding: 12px 16px; font-weight: 600; color: #334155; min-width: 130px; text-align: center; }
+        .diagram-arrow { font-size: 1.4rem; color: var(--secondary); font-weight: 800; }
+        .topic-visual { width: 100%; height: 260px; object-fit: cover; border-radius: 20px; margin: 20px 0; }
+        .blog-placeholder { background: white; padding: 40px; border-radius: 30px; border: 1px solid #e2e8f0; color: #64748b; text-align: center; }
         .checkout-grid { display: grid; grid-template-columns: 1fr 450px; gap: 40px; }
         .payment-box { background: white; padding: 30px; border-radius: 30px; border: 1px solid #e2e8f0; }
         .payment-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
         .pay-method { border: 2px solid #f1f5f9; padding: 15px; border-radius: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .pay-method img { height: 25px; margin-bottom: 8px; object-fit: contain; }
+        .pay-method img { height: 28px; margin-bottom: 8px; object-fit: contain; max-width: 100px; }
         .pay-method:hover, .pay-method.active { border-color: var(--secondary); background: #f8faff; }
         input, textarea { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #e2e8f0; border-radius: 12px; outline: none; }
         .btn-order { width: 100%; padding: 18px; background: var(--accent); color: white; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; margin-top: 15px; transition: 0.3s; }
         .btn-order:hover { filter: brightness(1.1); }
+
+        @media(max-width: 980px){
+            .blog-container, .checkout-grid { grid-template-columns: 1fr; }
+            .blog-sidebar { position: relative; top: 0; height: auto; }
+        }
     </style>
 </head>
 <body>
@@ -77,6 +93,7 @@
         </ul>
     </nav>
 </header>
+
 <section id="home" class="page-section active">
     <div class="dynamic-hero" id="hero-area">
         <div class="hero-bg"></div>
@@ -92,6 +109,7 @@
     <h2 style="margin-bottom: 30px; font-size: 2rem;">Hardware Inventory</h2>
     <div class="product-grid" id="p-grid"></div>
 </section>
+
 <section id="overview" class="page-section">
     <div style="text-align: center; margin-bottom: 50px;">
         <h2 style="font-size: 2.5rem;">Our Mission & Vision</h2>
@@ -105,15 +123,22 @@
         <div class="member-card"><h3>Swathi</h3><p>Quality Assurance lead for seamless user journeys.</p></div>
     </div>
 </section>
+
 <section id="blog" class="page-section">
     <div class="blog-container">
         <aside class="blog-sidebar">
             <h4>jQuery Library</h4>
             <ul id="blog-nav" class="blog-nav-list"></ul>
         </aside>
-        <main id="blog-content"></main>
+        <main id="blog-content">
+            <div class="blog-placeholder" id="blog-placeholder">
+                <h3 style="margin-bottom:10px; color:#3a7bd5;">Select a jQuery Topic</h3>
+                <p>Click any heading on the left to view the full structured explanation, block diagram, and visual content for that topic.</p>
+            </div>
+        </main>
     </div>
 </section>
+
 <section id="contact" class="page-section">
     <h2 style="text-align:center; margin-bottom: 40px;">Contact Technical Support</h2>
     <div class="team-grid">
@@ -123,6 +148,7 @@
         <div class="member-card"><h3>Swathi</h3><a href="https://mail.google.com/mail/?view=cm&fs=1&to=swathi@gmail.com" target="_blank" style="color: #ea4335; text-decoration: none; font-weight: 700;">📧 Email Swathi</a></div>
     </div>
 </section>
+
 <section id="checkout" class="page-section">
     <div class="checkout-grid">
         <div class="payment-box">
@@ -133,7 +159,10 @@
                 <textarea id="c-address" rows="3" placeholder="Full Delivery Address"></textarea>
                 <h3 style="margin: 20px 0 10px 0;">Payment Gateway</h3>
                 <div class="payment-options">
-                    <div class="pay-method" data-pay="GPay"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Pay_Logo.svg" alt="Google Pay"><small>GPay</small></div>
+                    <div class="pay-method" data-pay="GPay">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Google_Pay_Logo_%282020%29.svg/640px-Google_Pay_Logo_%282020%29.svg.png" alt="Google Pay">
+                        <small>GPay</small>
+                    </div>
                     <div class="pay-method" data-pay="PhonePe"><img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe"><small>PhonePe</small></div>
                     <div class="pay-method" data-pay="Razorpay"><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay"><small>Razorpay</small></div>
                     <div class="pay-method" data-pay="Cash"><div style="font-size:1.2rem;">💵</div><small>Cash</small></div>
@@ -147,9 +176,13 @@
         </div>
     </div>
 </section>
+
 <script>
 $(document).ready(function() {
-    let cart = []; let total = 0; let selectedPay = "";
+    let cart = [];
+    let total = 0;
+    let selectedPay = "";
+
     const products = [
         { id: 1, n: "Flux Pods Pro", p: 199, img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" },
         { id: 2, n: "Vision Watch 6", p: 349, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" },
@@ -158,15 +191,148 @@ $(document).ready(function() {
         { id: 5, n: "Mechanical Keys", p: 149, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" },
         { id: 6, n: "Smart Projector", p: 899, img: "https://images.unsplash.com/photo-1534073828943-f801091bb18c?w=400" }
     ];
-    products.forEach(p => { $('#p-grid').append(`<div class="product-card"><img src="${p.img}"><h3>${p.n}</h3><p class="price">$${p.p}</p><button class="btn-order add-to-cart" data-id="${p.id}" style="padding:10px; font-size:0.8rem;">Add to Flux</button></div>`); });
-    $('#hero-area').mousemove(function(e) { let x = (window.innerWidth / 2 - e.pageX) / 25; let y = (window.innerHeight / 2 - e.pageY) / 25; $('#tilt-card').css("transform", `rotateY(${x}deg) rotateX(${y}deg)`); });
-    const jqueryTopics = ["Sizzle Engine", "DOM Selectors", "Event Delegation", "AJAX Streams", "Fade Effects", "Attr Control", "CSS Variable Hooks", "Form Serialization", "Method Chaining", "Closest Traversal", "Each Iteration", "Stop Queues", "Class Toggling", "Append Logic", "Data Attributes", "Val Management", "Delay/Timeout", "Prop vs Attr", "Offloading Events", "Global AJAX", "Wrap Elements", "InnerHTML Control", "Dimension Logic", "Scroll Detection", "Sibling Traversal"];
-    jqueryTopics.forEach((topic, i) => { const id = `topic-${i}`; $('#blog-nav').append(`<li data-target="${id}">${topic}</li>`); $('#blog-content').append(`<div class="blog-post" id="${id}"><h3>${topic}</h3><p>Advanced asynchronous management module.</p><div class="code-snippet">$('.flux-element').${topic.toLowerCase().replace(' ', '')}();</div></div>`); });
-    $('.nav-item, .logo').click(function() { const target = $(this).data('link'); $('.nav-item').removeClass('active'); $(`.nav-item[data-link="${target}"]`).addClass('active'); $('.page-section').hide(); $(`#${target}`).show(); });
-    $(document).on('click', '#blog-nav li', function() { const target = $(this).data('target'); $('html, body').animate({ scrollTop: $(`#${target}`).offset().top - 100 }, 500); });
-    $(document).on('click', '.add-to-cart', function() { const item = products.find(x => x.id == $(this).data('id')); cart.push(item); total += item.p; $('#cart-count').text(cart.length); $('#total-val').text(total); $('#cart-items-list').append(`<div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;"><span>${item.n}</span> <span>$${item.p}</span></div>`); });
-    $('.pay-method').click(function() { $('.pay-method').removeClass('active'); $(this).addClass('active'); selectedPay = $(this).data('pay'); });
-    $('#final-order').click(function() { if(!selectedPay || !$('#c-name').val() || !$('#c-phone').val()) return alert("Please fill shipping details!"); alert("Order Successful via " + selectedPay + "!"); location.reload(); });
+
+    products.forEach(p => {
+        $('#p-grid').append(`<div class="product-card"><img src="${p.img}"><h3>${p.n}</h3><p class="price">$${p.p}</p><button class="btn-order add-to-cart" data-id="${p.id}" style="padding:10px; font-size:0.8rem;">Add to Flux</button></div>`);
+    });
+
+    $('#hero-area').mousemove(function(e) {
+        let x = (window.innerWidth / 2 - e.pageX) / 25;
+        let y = (window.innerHeight / 2 - e.pageY) / 25;
+        $('#tilt-card').css("transform", `rotateY(${x}deg) rotateX(${y}deg)`);
+    });
+
+    const jqueryTopics = [
+        "Sizzle Engine", "DOM Selectors", "Event Delegation", "AJAX Streams", "Fade Effects",
+        "Attr Control", "CSS Variable Hooks", "Form Serialization", "Method Chaining", "Closest Traversal",
+        "Each Iteration", "Stop Queues", "Class Toggling", "Append Logic", "Data Attributes",
+        "Val Management", "Delay/Timeout", "Prop vs Attr", "Offloading Events", "Global AJAX",
+        "Wrap Elements", "InnerHTML Control", "Dimension Logic", "Scroll Detection", "Sibling Traversal"
+    ];
+
+    const topicImage = {
+        "Sizzle Engine":"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200",
+        "DOM Selectors":"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200",
+        "Event Delegation":"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200",
+        "AJAX Streams":"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200",
+        "Fade Effects":"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200",
+        "Attr Control":"https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200",
+        "CSS Variable Hooks":"https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200",
+        "Form Serialization":"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200",
+        "Method Chaining":"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200",
+        "Closest Traversal":"https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200",
+        "Each Iteration":"https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1200",
+        "Stop Queues":"https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200",
+        "Class Toggling":"https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200",
+        "Append Logic":"https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=1200",
+        "Data Attributes":"https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200",
+        "Val Management":"https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=1200",
+        "Delay/Timeout":"https://images.unsplash.com/photo-1537432376769-00a6f9f2f5c0?w=1200",
+        "Prop vs Attr":"https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200",
+        "Offloading Events":"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200",
+        "Global AJAX":"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200",
+        "Wrap Elements":"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200",
+        "InnerHTML Control":"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200",
+        "Dimension Logic":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200",
+        "Scroll Detection":"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200",
+        "Sibling Traversal":"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200"
+    };
+
+    function buildTopicContent(topic){
+        const id = topic.replace(/\s+/g,'-');
+        return `
+            <div class="blog-post" id="${id}">
+                <h3>${topic}</h3>
+                <img class="topic-visual" src="${topicImage[topic]}" alt="${topic}">
+                <h4>Introduction</h4>
+                <p>${topic} is an important part of jQuery used for writing dynamic, responsive, and browser-friendly web applications. It helps developers reduce repetitive JavaScript work by using compact and reusable methods. In real production interfaces, this topic improves speed, readability, and interaction design.</p>
+
+                <h4>Core Explanation</h4>
+                <p>When developers work with ${topic.toLowerCase()}, they usually aim to make the page more interactive and easier to manage. jQuery provides simplified syntax so operations can be performed with fewer lines of code. This is especially useful in applications that update content dynamically without rebuilding the entire page.</p>
+                <p>In practical development, ${topic.toLowerCase()} is combined with event handlers, selectors, and DOM updates to produce efficient UI behavior. It becomes more valuable when multiple elements or repeated actions are involved because jQuery can apply one method across many matched elements at the same time.</p>
+
+                <h4>Block Diagram</h4>
+                <div class="diagram-box">
+                    <div class="diagram-title">${topic} Workflow</div>
+                    <div class="diagram-flow">
+                        <div class="diagram-node">User Action</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-node">jQuery Selector</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-node">${topic}</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-node">DOM Update</div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-node">Visible Output</div>
+                    </div>
+                </div>
+
+                <h4>Why It Matters</h4>
+                <p>${topic} improves maintainability, reduces code duplication, and supports clean interaction logic. In large web projects, this makes troubleshooting easier and keeps the UI responsive. It is commonly used in dashboards, shopping sites, content systems, and form-based applications.</p>
+
+                <h4>Example Code</h4>
+                <div class="code-snippet">
+$('.flux-element').on('click', function() {
+    $(this).addClass('active');
+    $(this).find('.result').fadeIn();
+});
+                </div>
+
+                <h4>Detailed Notes</h4>
+                <p>Developers often study ${topic.toLowerCase()} not only for syntax, but also for understanding how the browser reacts to changes in structure, attributes, styles, and events. This concept helps in building user-friendly flows where content appears smoothly and updates at the correct time. It also reduces the need for long manual DOM operations.</p>
+                <p>In advanced use, ${topic.toLowerCase()} can be connected with AJAX, animation pipelines, and nested selectors to handle highly interactive pages. This allows developers to build search interfaces, product filters, expandable cards, dynamic blog sections, and real-time feedback forms without unnecessary complexity.</p>
+            </div>
+        `;
+    }
+
+    jqueryTopics.forEach(topic => {
+        const id = topic.replace(/\s+/g,'-');
+        $('#blog-nav').append(`<li data-target="${id}">${topic}</li>`);
+        $('#blog-content').append(buildTopicContent(topic));
+    });
+
+    $('.nav-item, .logo').click(function() {
+        const target = $(this).data('link');
+        $('.nav-item').removeClass('active');
+        $(`.nav-item[data-link="${target}"]`).addClass('active');
+        $('.page-section').hide();
+        $(`#${target}`).show();
+    });
+
+    $(document).on('click', '#blog-nav li', function() {
+        const target = $(this).data('target');
+        $('#blog-nav li').removeClass('active');
+        $(this).addClass('active');
+        $('#blog-placeholder').hide();
+        $('.blog-post').removeClass('active').hide();
+        $('#' + target).addClass('active').show();
+
+        const blogSectionTop = $('#blog-content').offset().top - 20;
+        $('html, body').animate({
+            scrollTop: blogSectionTop
+        }, 300);
+    });
+
+    $(document).on('click', '.add-to-cart', function() {
+        const item = products.find(x => x.id == $(this).data('id'));
+        cart.push(item);
+        total += item.p;
+        $('#cart-count').text(cart.length);
+        $('#total-val').text(total);
+        $('#cart-items-list').append(`<div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;"><span>${item.n}</span> <span>$${item.p}</span></div>`);
+    });
+
+    $('.pay-method').click(function() {
+        $('.pay-method').removeClass('active');
+        $(this).addClass('active');
+        selectedPay = $(this).data('pay');
+    });
+
+    $('#final-order').click(function() {
+        if(!selectedPay || !$('#c-name').val() || !$('#c-phone').val()) return alert("Please fill shipping details!");
+        alert("Order Successful via " + selectedPay + "!");
+        location.reload();
+    });
 });
 </script>
 </body>
