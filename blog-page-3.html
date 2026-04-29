@@ -3,49 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JQueryFlux Blog Page 3</title>
-  <meta name="description" content="JQueryFlux technical blog page 3 with final advanced jQuery concepts." />
+  <title>Blog Page 3 | JQueryFlux</title>
+  <meta name="description" content="JQueryFlux technical blog page 3." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://sprightly-trifle-ccd6cd.netlify.app/blog-page-3.html" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family:'Outfit',sans-serif; background:#f8fafc; color:#0f172a; margin:0; }
-    header, section { padding:25px 8%; }
-    header { background:#fff; border-bottom:1px solid #e2e8f0; }
-    nav a { margin-right:14px; text-decoration:none; color:#3a7bd5; font-weight:700; }
-    .blog-grid { display:grid; gap:25px; }
-    .blog-post { background:#fff; border:1px solid #e2e8f0; border-radius:24px; padding:20px; }
-    .blog-post img { width:100%; height:180px; object-fit:cover; border-radius:18px; margin-bottom:15px; }
-    .blog-post h3 { color:#3a7bd5; }
-    .blog-post p { color:#475569; line-height:1.8; }
-    .pagination { display:flex; gap:10px; justify-content:center; margin-top:35px; flex-wrap:wrap; }
-    .pagination a { text-decoration:none; padding:10px 16px; border-radius:10px; background:#e2e8f0; color:#0f172a; font-weight:700; }
-    .pagination a.active { background:#3a7bd5; color:white; }
+    body{font-family:'Outfit',sans-serif;margin:0;background:#f8fafc;color:#0f172a;}
+    header{background:#fff;padding:15px 8%;border-bottom:1px solid #e2e8f0;position:sticky;top:0;}
+    nav ul{display:flex;list-style:none;gap:18px;flex-wrap:wrap;padding:0;margin:0;}
+    nav a{text-decoration:none;color:#64748b;font-weight:600;}
+    nav a:hover{color:#3a7bd5;}
+    section{padding:60px 8%;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;}
+    .post{background:#fff;border:1px solid #e2e8f0;border-radius:24px;padding:20px;box-shadow:0 10px 25px rgba(0,0,0,0.04);}
+    .post img{width:100%;height:180px;object-fit:cover;border-radius:18px;margin-bottom:15px;}
+    .post h3{color:#3a7bd5;margin-bottom:10px;}
+    .post p{line-height:1.8;color:#475569;}
+    .pagination{display:flex;gap:10px;justify-content:center;margin-top:35px;flex-wrap:wrap;}
+    .pagination a{text-decoration:none;padding:10px 16px;border-radius:10px;background:#e2e8f0;color:#0f172a;font-weight:700;}
+    .pagination a.active{background:#3a7bd5;color:#fff;}
   </style>
 </head>
 <body>
 <header>
-  <h1>JQueryFlux Blog - Page 3</h1>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">Cart</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="blog-page-2.html">Blog 2</a></li>
+      <li><a href="blog-page-3.html">Blog 3</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
   </nav>
 </header>
 
 <section>
-  <div class="blog-grid">
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Wrap Elements"><h3>21. Wrap Elements</h3><p>Wrap methods surround selected elements with new HTML structures for better layout grouping.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200" alt="InnerHTML Control"><h3>22. InnerHTML Control</h3><p>InnerHTML control lets developers replace or inspect the internal markup of selected elements.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200" alt="Dimension Logic"><h3>23. Dimension Logic</h3><p>Dimension logic reads and updates width, height, padding, and layout size details in the browser.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200" alt="Scroll Detection"><h3>24. Scroll Detection</h3><p>Scroll detection monitors vertical or horizontal movement to trigger lazy loading or animations.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Sibling Traversal"><h3>25. Sibling Traversal</h3><p>Sibling traversal helps locate nearby elements at the same DOM level for navigation and UI interaction.</p></div>
+  <h1>Technical Blog - Page 3</h1>
+  <div class="grid">
+    <div class="post"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200" alt="Offloading Events"><h3>19. Offloading Events</h3><p>Offloading events improves performance by reducing repeated listeners.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200" alt="Global AJAX"><h3>20. Global AJAX</h3><p>Global AJAX handlers help manage loading indicators and request events across the site.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Wrap Elements"><h3>21. Wrap Elements</h3><p>Wrap elements lets developers insert HTML around existing content structures.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200" alt="InnerHTML Control"><h3>22. InnerHTML Control</h3><p>Inner HTML control is used to replace or update element content dynamically.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200" alt="Dimension Logic"><h3>23. Dimension Logic</h3><p>Dimension logic helps measure width, height, and layout spacing accurately.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200" alt="Scroll Detection"><h3>24. Scroll Detection</h3><p>Scroll detection is useful for sticky UI, animations, and lazy-loaded content.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Sibling Traversal"><h3>25. Sibling Traversal</h3><p>Sibling traversal helps access nearby elements at the same DOM level.</p></div>
   </div>
 
   <div class="pagination">
-    <a href="blog-page-2.html">Previous</a>
-    <a href="index.html">1</a>
+    <a href="blog.html">1</a>
     <a href="blog-page-2.html">2</a>
     <a href="blog-page-3.html" class="active">3</a>
   </div>
