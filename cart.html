@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ43FFY7X4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BQ43FFY7X4');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JQueryFlux | Cart</title>
+  <meta name="google-site-verification" content="vQk5YgdDTMWBHGuE1z1WM4pbZl4GdkgDpR8rkPAKpac" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --secondary:#3a7bd5; --accent:#22c55e; --dark:#0f172a; --bg:#f8fafc; }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Outfit', sans-serif; }
+    body { background:var(--bg); color:var(--dark); }
+    header { background:white; padding:15px 8%; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; }
+    .logo { font-size:1.8rem; font-weight:800; text-decoration:none; color:var(--dark); }
+    .logo span { color:var(--secondary); }
+    nav ul { display:flex; list-style:none; gap:25px; }
+    nav a { text-decoration:none; font-weight:600; color:#64748b; }
+    nav a.active, nav a:hover { color:var(--secondary); }
+    .page { padding:60px 8%; }
+    .cart-grid { display:grid; grid-template-columns:1fr 450px; gap:40px; }
+    .payment-box { background:white; padding:30px; border-radius:30px; border:1px solid #e2e8f0; }
+    .payment-options { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:20px; }
+    .pay-method { border:2px solid #f1f5f9; padding:15px; border-radius:15px; cursor:pointer; display:flex; flex-direction:column; align-items:center; transition:0.3s; }
+    .pay-method img { height:28px; margin-bottom:8px; object-fit:contain; max-width:100px; }
+    .pay-method:hover, .pay-method.active { border-color:var(--secondary); background:#f8faff; }
+    input, textarea { width:100%; padding:14px; margin-bottom:12px; border:1px solid #e2e8f0; border-radius:12px; outline:none; }
+    .btn-order { width:100%; padding:18px; background:var(--accent); color:white; border:none; border-radius:15px; font-weight:800; cursor:pointer; margin-top:15px; }
+    @media(max-width:980px){ .cart-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">JQuery<span>Flux</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Technical Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page">
+    <div class="cart-grid">
+      <div class="payment-box">
+        <h2>Shipping Details</h2>
+        <div style="margin-top:20px;">
+          <input type="text" id="c-name" placeholder="Full Name">
+          <input type="text" id="c-phone" placeholder="Phone Number">
+          <textarea id="c-address" rows="3" placeholder="Full Delivery Address"></textarea>
+
+          <h3 style="margin:20px 0 10px 0;">Payment Gateway</h3>
+          <div class="payment-options">
+            <div class="pay-method" data-pay="GPay">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Google_Pay_Logo_%282020%29.svg/640px-Google_Pay_Logo_%282020%29.svg.png" alt="Google Pay">
+              <small>GPay</small>
+            </div>
+            <div class="pay-method" data-pay="PhonePe">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" alt="PhonePe">
+              <small>PhonePe</small>
+            </div>
+            <div class="pay-method" data-pay="Razorpay">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay">
+              <small>Razorpay</small>
+            </div>
+            <div class="pay-method" data-pay="Cash">
+              <div style="font-size:1.2rem;">💵</div>
+              <small>Cash</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-box">
+        <h3>Total: $<span id="total-val">0</span></h3>
+        <div id="cart-items-list" style="margin:20px 0; border-top:1px solid #eee;">
+          <div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;">
+            <span>Flux Pods Pro</span><span>$199</span>
+          </div>
+          <div style="padding:10px 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between;">
+            <span>Vision Watch 6</span><span>$349</span>
+          </div>
+        </div>
+        <button class="btn-order" id="final-order">PLACE SECURE ORDER</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let selectedPay = "";
+
+    $('.pay-method').click(function() {
+      $('.pay-method').removeClass('active');
+      $(this).addClass('active');
+      selectedPay = $(this).data('pay');
+    });
+
+    $('#final-order').click(function() {
+      if(!selectedPay || !$('#c-name').val() || !$('#c-phone').val()) {
+        alert("Please fill shipping details!");
+        return;
+      }
+      alert("Order Successful via " + selectedPay + "!");
+    });
+  </script>
+</body>
+</html>
