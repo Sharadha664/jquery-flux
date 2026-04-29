@@ -3,119 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JQueryFlux | Tech Store & Blog</title>
-  <meta name="description" content="JQueryFlux is a modern tech store with hardware products and a technical blog." />
+  <title>About | JQueryFlux</title>
+  <meta name="description" content="Learn about JQueryFlux, our mission, team, and purpose." />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://sprightly-trifle-ccd6cd.netlify.app/" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-
+  <link rel="canonical" href="https://sprightly-trifle-ccd6cd.netlify.app/about.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root { --primary:#00d2ff; --secondary:#3a7bd5; --accent:#22c55e; --dark:#0f172a; --bg:#f8fafc; }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Outfit',sans-serif; }
-    body { background:var(--bg); color:var(--dark); }
-    header { background:rgba(255,255,255,0.95); padding:15px 8%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; border-bottom:1px solid #e2e8f0; }
-    .logo { font-size:1.8rem; font-weight:800; letter-spacing:-1px; }
-    .logo span { color:var(--secondary); }
-    nav ul { display:flex; list-style:none; gap:20px; flex-wrap:wrap; }
-    nav a { text-decoration:none; color:#64748b; font-weight:600; }
-    nav a:hover { color:var(--secondary); }
-    .hero { background:linear-gradient(135deg,#0f172a,#1e293b); color:white; padding:80px 8%; border-radius:30px; margin:30px 8%; text-align:center; }
-    .hero h1 { font-size:3rem; margin-bottom:10px; }
-    .hero p { color:#cbd5e1; font-size:1.1rem; }
-    section { padding:60px 8%; }
-    .section-title { font-size:2rem; margin-bottom:30px; }
-    .product-grid, .blog-grid, .page-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:25px; }
-    .card, .blog-post { background:white; border:1px solid #e2e8f0; border-radius:24px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.04); }
-    .card img, .blog-post img { width:100%; height:180px; object-fit:cover; border-radius:18px; margin-bottom:15px; }
-    .price { color:var(--secondary); font-size:1.3rem; font-weight:800; margin-top:6px; }
-    .blog-post h3 { color:var(--secondary); margin-bottom:12px; }
-    .blog-post p, .card p { color:#475569; line-height:1.8; }
-    .pagination { display:flex; gap:10px; justify-content:center; margin-top:35px; flex-wrap:wrap; }
-    .pagination a { text-decoration:none; padding:10px 16px; border-radius:10px; background:#e2e8f0; color:#0f172a; font-weight:700; }
-    .pagination a.active { background:var(--secondary); color:white; }
-    footer { text-align:center; padding:30px; color:#64748b; }
+    body{font-family:'Outfit',sans-serif;margin:0;background:#f8fafc;color:#0f172a;}
+    header{background:#fff;padding:15px 8%;border-bottom:1px solid #e2e8f0;}
+    nav ul{display:flex;list-style:none;gap:18px;flex-wrap:wrap;padding:0;margin:0;}
+    nav a{text-decoration:none;color:#64748b;font-weight:600;}
+    nav a:hover{color:#3a7bd5;}
+    section{padding:60px 8%;}
+    .box{background:#fff;padding:30px;border-radius:24px;border:1px solid #e2e8f0;}
+    p{line-height:1.8;color:#475569;}
   </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">JQuery<span>Flux</span></div>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="cart.html">Cart</a></li>
-      <li><a href="blog-page-2.html">Blog 2</a></li>
-      <li><a href="blog-page-3.html">Blog 3</a></li>
     </ul>
   </nav>
 </header>
-
-<div class="hero">
-  <h1>Welcome to JQueryFlux</h1>
-  <p>Modern hardware store and technical knowledge platform.</p>
-</div>
-
 <section>
-  <h2 class="section-title">Featured Products</h2>
-  <div class="product-grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="Flux Pods Pro">
-      <h3>Flux Pods Pro</h3>
-      <p>Premium wireless earbuds for modern users.</p>
-      <div class="price">$199</div>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="Vision Watch 6">
-      <h3>Vision Watch 6</h3>
-      <p>Smart wearable with health and productivity tracking.</p>
-      <div class="price">$349</div>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400" alt="Core Laptop 16">
-      <h3>Core Laptop 16</h3>
-      <p>High performance machine for creators and coders.</p>
-      <div class="price">$1599</div>
-    </div>
+  <div class="box">
+    <h1>About JQueryFlux</h1>
+    <p>JQueryFlux is a modern tech store and learning platform focused on hardware products and technical blog content.</p>
+    <p>We combine a product-focused interface with clear educational content so visitors can explore devices and learn technical concepts in one place.</p>
   </div>
 </section>
-
-<section>
-  <h2 class="section-title">Important Pages</h2>
-  <div class="page-grid">
-    <div class="card"><h3>About</h3><p>Visit the about page to learn about the mission and team.</p><p><a href="about.html">Open About Page</a></p></div>
-    <div class="card"><h3>Contact</h3><p>Visit the contact page for support and communication details.</p><p><a href="contact.html">Open Contact Page</a></p></div>
-    <div class="card"><h3>Cart</h3><p>Visit the cart page to review selected products and checkout flow.</p><p><a href="cart.html">Open Cart Page</a></p></div>
-  </div>
-</section>
-
-<section>
-  <h2 class="section-title">Technical Blog - Page 1</h2>
-  <div class="blog-grid">
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200" alt="Sizzle Engine"><h3>1. Sizzle Engine</h3><p>Sizzle is the selector engine behind jQuery that helps quickly identify DOM elements using CSS-like expressions.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200" alt="DOM Selectors"><h3>2. DOM Selectors</h3><p>DOM selectors are used in jQuery to target ids, classes, tags, and nested structures efficiently.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" alt="Event Delegation"><h3>3. Event Delegation</h3><p>Event delegation improves performance by attaching one event listener to a parent instead of many child elements.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200" alt="AJAX Streams"><h3>4. AJAX Streams</h3><p>AJAX lets pages load data dynamically without refreshing, creating faster and smoother user experiences.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200" alt="Fade Effects"><h3>5. Fade Effects</h3><p>Fade effects make UI transitions smoother by gradually showing or hiding content.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200" alt="Attr Control"><h3>6. Attr Control</h3><p>Attribute control helps read, update, or remove HTML attributes like src, href, and title in jQuery.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200" alt="CSS Variable Hooks"><h3>7. CSS Variable Hooks</h3><p>These are techniques used to connect jQuery with styling logic and update interface design dynamically.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200" alt="Form Serialization"><h3>8. Form Serialization</h3><p>Serialization converts form fields into structured data that can be sent easily through AJAX requests.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200" alt="Method Chaining"><h3>9. Method Chaining</h3><p>Method chaining allows multiple jQuery actions to be written in one clean sequence on the same element.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200" alt="Closest Traversal"><h3>10. Closest Traversal</h3><p>Closest traversal helps find the nearest matching parent element in the DOM tree.</p></div>
-  </div>
-
-  <div class="pagination">
-    <a href="index.html" class="active">1</a>
-    <a href="blog-page-2.html">2</a>
-    <a href="blog-page-3.html">3</a>
-    <a href="blog-page-2.html">Next</a>
-  </div>
-</section>
-
-<footer>
-  © 2026 JQueryFlux. All rights reserved.
-</footer>
-
 </body>
 </html>
