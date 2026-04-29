@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JQueryFlux Blog Page 2</title>
-  <meta name="description" content="JQueryFlux technical blog page 2 covering more advanced jQuery concepts." />
+  <title>Blog Page 2 | JQueryFlux</title>
+  <meta name="description" content="JQueryFlux technical blog page 2." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://sprightly-trifle-ccd6cd.netlify.app/blog-page-2.html" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family:'Outfit',sans-serif; background:#f8fafc; color:#0f172a; margin:0; }
-    header, section { padding:25px 8%; }
-    header { background:#fff; border-bottom:1px solid #e2e8f0; }
-    nav a { margin-right:14px; text-decoration:none; color:#3a7bd5; font-weight:700; }
-    .blog-grid { display:grid; gap:25px; }
-    .blog-post { background:#fff; border:1px solid #e2e8f0; border-radius:24px; padding:20px; }
-    .blog-post img { width:100%; height:180px; object-fit:cover; border-radius:18px; margin-bottom:15px; }
-    .blog-post h3 { color:#3a7bd5; }
-    .blog-post p { color:#475569; line-height:1.8; }
-    .pagination { display:flex; gap:10px; justify-content:center; margin-top:35px; flex-wrap:wrap; }
-    .pagination a { text-decoration:none; padding:10px 16px; border-radius:10px; background:#e2e8f0; color:#0f172a; font-weight:700; }
-    .pagination a.active { background:#3a7bd5; color:white; }
+    body{font-family:'Outfit',sans-serif;margin:0;background:#f8fafc;color:#0f172a;}
+    header{background:#fff;padding:15px 8%;border-bottom:1px solid #e2e8f0;}
+    nav a{text-decoration:none;color:#3a7bd5;font-weight:700;margin-right:15px;}
+    section{padding:60px 8%;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;}
+    .post{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:20px;}
+    .post img{width:100%;height:180px;object-fit:cover;border-radius:15px;margin-bottom:12px;}
+    .pagination{display:flex;gap:10px;justify-content:center;margin-top:35px;flex-wrap:wrap;}
+    .pagination a{text-decoration:none;padding:10px 16px;border-radius:10px;background:#e2e8f0;color:#0f172a;font-weight:700;}
+    .pagination a.active{background:#3a7bd5;color:#fff;}
   </style>
 </head>
 <body>
 <header>
-  <h1>JQueryFlux Blog - Page 2</h1>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -33,23 +30,20 @@
     <a href="cart.html">Cart</a>
   </nav>
 </header>
-
 <section>
-  <div class="blog-grid">
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1200" alt="Each Iteration"><h3>11. Each Iteration</h3><p>The each method loops through multiple matched elements and performs actions on every item one by one.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200" alt="Stop Queues"><h3>12. Stop Queues</h3><p>Stop queues are used to halt running animations and prevent excessive effect stacking.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200" alt="Class Toggling"><h3>13. Class Toggling</h3><p>Class toggling adds or removes CSS classes dynamically to update layouts, states, and styles.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=1200" alt="Append Logic"><h3>14. Append Logic</h3><p>Append logic inserts new HTML content inside an existing element without replacing current content.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200" alt="Data Attributes"><h3>15. Data Attributes</h3><p>Data attributes store extra information in HTML elements and can be accessed easily using jQuery.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=1200" alt="Val Management"><h3>16. Val Management</h3><p>Val management controls form field values such as text input, dropdown choices, and textarea content.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1537432376769-00a6f9f2f5c0?w=1200" alt="Delay Timeout"><h3>17. Delay/Timeout</h3><p>Delay and timeout methods help schedule actions, animation timing, and staggered UI changes.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200" alt="Prop vs Attr"><h3>18. Prop vs Attr</h3><p>Prop and attr are different jQuery methods used for DOM properties and HTML attributes respectively.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200" alt="Offloading Events"><h3>19. Offloading Events</h3><p>Offloading events means removing event listeners to reduce memory usage and avoid duplicate triggers.</p></div>
-    <div class="blog-post"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200" alt="Global AJAX"><h3>20. Global AJAX</h3><p>Global AJAX events help track start, stop, success, and error states across multiple AJAX calls.</p></div>
+  <h1>Technical Blog - Page 2</h1>
+  <div class="grid">
+    <div class="post"><img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1200" alt=""><h3>11. Each Iteration</h3><p>The each method allows developers to loop through matched elements efficiently.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200" alt=""><h3>12. Stop Queues</h3><p>Stop queues help control ongoing animations and prevent unwanted visual stacking.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=1200" alt=""><h3>13. Class Toggling</h3><p>Class toggling makes dynamic UI changes cleaner and easier to manage.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?w=1200" alt=""><h3>14. Append Logic</h3><p>Append logic is used to add new content dynamically inside selected elements.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200" alt=""><h3>15. Data Attributes</h3><p>Data attributes store small custom values directly in HTML for scripting use.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=1200" alt=""><h3>16. Val Management</h3><p>Val management is useful for reading and updating form input values.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1537432376769-00a6f9f2f5c0?w=1200" alt=""><h3>17. Delay Timeout</h3><p>Delay and timeout help create better sequencing in interaction flows.</p></div>
+    <div class="post"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1200" alt=""><h3>18. Prop vs Attr</h3><p>Understanding prop and attr is essential for correct DOM state handling.</p></div>
   </div>
 
   <div class="pagination">
-    <a href="index.html">Previous</a>
     <a href="index.html">1</a>
     <a href="blog-page-2.html" class="active">2</a>
     <a href="blog-page-3.html">3</a>
